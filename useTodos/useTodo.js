@@ -1,14 +1,6 @@
 import { useEffect, useReducer } from "react"
-import { todoReducer } from "../08-useReducer/todoReducer";
+import { todoReducer } from "./todoReducer";
 
-
-const initialState = [
-  // {
-  //   id: new Date().getTime(),
-  //   description: "Recolectar la piedra del alma",
-  //   done: false,
-  // },
-];
 
 const init = () => {
   return JSON.parse( localStorage.getItem("todos")) || [];
@@ -16,7 +8,7 @@ const init = () => {
 
 export const useTodo = () => {
 
-  const [ todos, dispatch ] = useReducer( todoReducer, initialState, init );
+  const [ todos, dispatch ] = useReducer( todoReducer, [], init );
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify( todos ) )
